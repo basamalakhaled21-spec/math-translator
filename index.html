@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Math Translator</title>
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#eeeaff;
+    margin:0;
+    padding:20px;
+    color:#252044;
+}
+
+.container{
+    max-width:650px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:0 5px 20px #bbb;
+}
+
+h1{
+    text-align:center;
+    color:#6252b8;
+}
+
+.subtitle{
+    text-align:center;
+    font-size:18px;
+}
+
+textarea{
+    width:100%;
+    height:100px;
+    box-sizing:border-box;
+    padding:15px;
+    font-size:18px;
+    border:2px solid #aaa;
+    border-radius:15px;
+    margin-top:15px;
+}
+
+button{
+    display:block;
+    margin:15px auto;
+    padding:12px 30px;
+    font-size:18px;
+    border:0;
+    border-radius:12px;
+    background:#6d5bd0;
+    color:white;
+}
+
+.result{
+    background:#f5f2ff;
+    padding:18px;
+    border-radius:15px;
+    font-size:19px;
+    line-height:2;
+}
+
+.label{
+    font-weight:bold;
+    color:#6252b8;
+}
+
+.examples{
+    margin-top:20px;
+    padding:15px;
+    background:#faf9ff;
+    border-radius:15px;
+    line-height:2;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🧮 Math Translator</h1>
+
+<div class="subtitle">
+From Words to Mathematics
+</div>
+
+<textarea id="input"
+placeholder="اكتبي جملة رياضية مثل: ضعف عدد زائد 5 يساوي 17"></textarea>
+
+<button onclick="translateMath()">Translate</button>
+
+<div class="result" id="result">
+النتيجة ستظهر هنا...
+</div>
+
+<div class="examples">
+
+<b>Examples:</b><br>
+
+ضعف عدد زائد 5 يساوي 17<br>
+
+ثلاثة أمثال عدد ناقص 4 يساوي 20<br>
+
+نصف عدد زائد 3 يساوي 8
+
+</div>
+
+</div>
+
+<script>
+
+function translateMath(){
+
+let text=document.getElementById("input").value.trim();
+
+let result="";
+
+if(text.includes("ضعف عدد") && text.includes("زائد 5") && text.includes("17")){
+
+result=`
+<div class="label">Natural Language:</div>
+${text}
+
+<div class="label">Mathematical Expression:</div>
+2x + 5 = 17
+
+<div class="label">Solution:</div>
+x = 6
+`;
+
+}
+
+else if(text.includes("ثلاثة أمثال عدد") && text.includes("ناقص 4") && text.includes("20")){
+
+result=`
+<div class="label">Natural Language:</div>
+${text}
+
+<div class="label">Mathematical Expression:</div>
+3x - 4 = 20
+
+<div class="label">Solution:</div>
+x = 8
+`;
+
+}
+
+else if(text.includes("نصف عدد") && text.includes("زائد 3") && text.includes("8")){
+
+result=`
+<div class="label">Natural Language:</div>
+${text}
+
+<div class="label">Mathematical Expression:</div>
+x/2 + 3 = 8
+
+<div class="label">Solution:</div>
+x = 10
+`;
+
+}
+
+else{
+
+result=`
+<b>لم يتم التعرف على الجملة بعد.</b>
+<br>
+جربي أحد الأمثلة الموجودة بالأسفل.
+`;
+
+}
+
+document.getElementById("result").innerHTML=result;
+
+}
+
+</script>
+
+</body>
+</html>
